@@ -87,9 +87,7 @@ export const UserNavbar = () => {
                 formData.append('avatar', avatarFile);
             }
 
-            const response = await api.put('/auth/profile', formData, {
-                headers: { 'Content-Type': 'multipart/form-data' },
-            });
+            const response = await api.put('/auth/profile', formData);
 
             updateUser(response.data.user);
             setIsEditing(false);
