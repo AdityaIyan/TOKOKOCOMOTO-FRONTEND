@@ -1,0 +1,8 @@
+__turbopack_load_page_chunks__("/orders/[id]", [
+  "static/chunks/9152de5ab6bb46d2.js",
+  "static/chunks/4506e147bf9b655b.js",
+  "static/chunks/8ccdffd5e36c2449.js",
+  "static/chunks/2d9d30ae3cb5b5c8.js",
+  "static/chunks/7d101464a64afc75.js",
+  "static/chunks/turbopack-fab4697c53039d1d.js"
+])
