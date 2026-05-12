@@ -5,6 +5,8 @@ import { Order } from '@/types';
 import { formatCurrency } from '@/lib/utils';
 import { useAuth } from '@/contexts/AuthContext';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+
 const OrderDetailPage = () => {
     const router = useRouter();
     const { id } = router.query;
@@ -73,11 +75,11 @@ const OrderDetailPage = () => {
         if (images.length > 0) {
             if (images[0].startsWith('/image/')) {
                 const filename = images[0].replace('/image/', '');
-                return `http://localhost:4000/public/uploads/${filename}`;
+                return `${API_URL}/public/uploads/${filename}`;
             } else if (images[0].startsWith('/') || images[0].startsWith('http')) {
                 return images[0];
             } else {
-                return `http://localhost:4000/public/uploads/${images[0]}`;
+                return `${API_URL}/public/uploads/${images[0]}`;
             }
         }
         return 'https://via.placeholder.com/150?text=No+Image';

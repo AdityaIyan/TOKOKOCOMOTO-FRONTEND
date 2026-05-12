@@ -6,6 +6,8 @@ import { formatCurrency } from '@/lib/utils';
 import { useAuth } from '@/contexts/AuthContext';
 import Link from 'next/link';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+
 const SellerOrderDetailPage = () => {
     const router = useRouter();
     const { id } = router.query;
@@ -93,7 +95,7 @@ const SellerOrderDetailPage = () => {
                             <p className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">Method: <span className="text-black">{order.paymentMethod}</span></p>
                             <div className="w-full h-auto bg-gray-100 rounded border border-gray-200 overflow-hidden mb-6 flex justify-center">
                                 <img 
-                                    src={`http://localhost:4000/public/uploads/${order.paymentProof}`} 
+                                    src={`${API_URL}/public/uploads/${order.paymentProof}`} 
                                     alt="Payment Proof" 
                                     className="max-w-full object-contain max-h-[500px]"
                                 />

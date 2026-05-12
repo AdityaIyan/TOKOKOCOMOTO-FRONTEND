@@ -35,7 +35,7 @@ export const CartItem: React.FC<CartItemProps> = ({ item, onUpdate }) => {
         if (images[0].startsWith('/') || images[0].startsWith('http')) {
             imageSrc = images[0];
         } else {
-            imageSrc = `http://localhost:4000/public/uploads/${images[0]}`;
+            imageSrc = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000'}/public/uploads/${images[0]}`;
         }
     }
 

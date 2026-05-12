@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import { useAuth } from "../../contexts/AuthContext";
 import ProtectedRoute from "../../components/ProtectedRoute";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+
 function NewPostContent() {
   const [content, setContent] = useState("");
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -38,7 +40,7 @@ function NewPostContent() {
         const form = new FormData();
         form.append("image", imageFile);
 
-        const uploadResponse = await fetch("http://localhost:4000/upload", {
+        const uploadResponse = await fetch(`${API_URL}/upload`, {
           method: "POST",
           headers: token ? { Authorization: `Bearer ${token}` } : undefined,
           body: form,
@@ -50,7 +52,7 @@ function NewPostContent() {
         imagePath = uploadedImagePath;            // <-- PENTING: gunakan url absolut dari backend
       }
 
-      const response = await fetch("http://localhost:4000/posts", {
+      const response = await fetch(`${API_URL}/posts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

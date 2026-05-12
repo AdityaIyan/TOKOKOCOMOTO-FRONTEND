@@ -45,7 +45,7 @@ export const UserNavbar = () => {
             setUsername(user.username || '');
             setEmail(user.email || '');
             if (user.avatar) {
-                setAvatarPreview(`http://localhost:4000/public/uploads/${user.avatar}`);
+                setAvatarPreview(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000'}/public/uploads/${user.avatar}`);
             } else {
                 setAvatarPreview(null);
             }
@@ -107,12 +107,12 @@ export const UserNavbar = () => {
         if (user) {
             setUsername(user.username || '');
             setEmail(user.email || '');
-            setAvatarPreview(user.avatar ? `http://localhost:4000/public/uploads/${user.avatar}` : null);
+            setAvatarPreview(user.avatar ? `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000'}/public/uploads/${user.avatar}` : null);
             setAvatarFile(null);
         }
     };
 
-    const avatarUrl = user?.avatar ? `http://localhost:4000/public/uploads/${user?.avatar}` : null;
+    const avatarUrl = user?.avatar ? `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000'}/public/uploads/${user?.avatar}` : null;
 
     return (
         <nav className="bg-white sticky top-0 z-50 h-[60px] flex items-center px-4 md:px-10 justify-between font-sans border-none shadow-none">

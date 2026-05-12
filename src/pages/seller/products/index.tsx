@@ -5,6 +5,8 @@ import api from '@/lib/axios';
 import Link from 'next/link';
 import { Product } from '@/types';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+
 const SellerProductsPage = () => {
     const { user, loading } = useAuth();
     const router = useRouter();
@@ -81,11 +83,11 @@ const SellerProductsPage = () => {
                                                         const img = images[0];
                                                         if (img.startsWith('/image/')) {
                                                             const filename = img.replace('/image/', '');
-                                                            imageSrc = `http://localhost:4000/public/uploads/${filename}`;
+                                                            imageSrc = `${API_URL}/public/uploads/${filename}`;
                                                         } else if (img.startsWith('http')) {
                                                             imageSrc = img;
                                                         } else {
-                                                            imageSrc = `http://localhost:4000/public/uploads/${img}`;
+                                                            imageSrc = `${API_URL}/public/uploads/${img}`;
                                                         }
                                                     }
                                                 } catch (e) {

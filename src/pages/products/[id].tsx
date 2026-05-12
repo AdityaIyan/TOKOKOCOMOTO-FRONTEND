@@ -5,6 +5,8 @@ import { Product } from '@/types';
 import { formatCurrency } from '@/lib/utils';
 import { useAuth } from '@/contexts/AuthContext';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+
 const ProductDetailPage = () => {
     const router = useRouter();
     const { id } = router.query;
@@ -64,11 +66,11 @@ const ProductDetailPage = () => {
     if (images.length > 0) {
         if (images[0].startsWith('/image/')) {
             const filename = images[0].replace('/image/', '');
-            imageSrc = `http://localhost:4000/public/uploads/${encodeURIComponent(filename)}`;
+            imageSrc = `${API_URL}/public/uploads/${encodeURIComponent(filename)}`;
         } else if (images[0].startsWith('/') || images[0].startsWith('http')) {
             imageSrc = images[0];
         } else {
-            imageSrc = `http://localhost:4000/public/uploads/${encodeURIComponent(images[0])}`;
+            imageSrc = `${API_URL}/public/uploads/${encodeURIComponent(images[0])}`;
         }
     }
 
