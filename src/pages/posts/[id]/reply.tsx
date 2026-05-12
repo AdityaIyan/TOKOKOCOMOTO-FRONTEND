@@ -38,7 +38,7 @@ export default function ReplyToPost() {
 
     async function fetchPost() {
       try {
-        const response = await fetch(`http://localhost:4000/posts/${postId}`);
+        const response = await fetch(`${API_BASE_URL}/posts/${postId}`);
         if (response.ok) {
           const postData = await response.json();
           setPost(postData);

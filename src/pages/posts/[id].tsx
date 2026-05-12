@@ -36,7 +36,7 @@ export default function PostDetails() {
 
     async function fetchPost() {
       try {
-        const response = await fetch(`http://localhost:4000/posts/${postId}`);
+        const response = await fetch(`${API_BASE}/posts/${postId}`);
         if (response.ok) {
           const postData = await response.json();
           setPost(postData);
@@ -61,7 +61,7 @@ export default function PostDetails() {
 
     if (confirm("Are you sure you want to delete this post?")) {
       try {
-        const response = await fetch(`http://localhost:4000/posts/${postId}`, {
+        const response = await fetch(`${API_BASE}/posts/${postId}`, {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${token}`,

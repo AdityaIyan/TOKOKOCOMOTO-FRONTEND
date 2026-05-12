@@ -24,13 +24,14 @@ function EditPostContent() {
   const router = useRouter();
   const { id: postId } = router.query;
   const { token, user } = useAuth();
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000";
 
   useEffect(() => {
     if (!postId) return;
 
     async function fetchPost() {
       try {
-        const response = await fetch(`http://localhost:4000/posts/${postId}`);
+        const response = await fetch(`${API_BASE_URL}/posts/${postId}`);
         if (response.ok) {
           const postData = await response.json();
           // Check if user can edit this post
@@ -66,7 +67,7 @@ function EditPostContent() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`http://localhost:4000/posts/${postId}`, {
+      const response = await fetch(`${API_BASE_URL}/posts/${postId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
